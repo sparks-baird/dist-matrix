@@ -6,7 +6,7 @@ import numpy as np
 from numba.cuda.testing import unittest, CUDATestCase
 
 # import numba.cuda.kernels.device.helper as hp
-from utils import cpu_helper as hp
+from dist_matrix.utils import cpu_helper as hp
 
 from numpy.testing import assert_allclose, assert_equal
 

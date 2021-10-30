@@ -8,13 +8,13 @@ import numpy as np
 from scipy.spatial.distance import euclidean, cdist
 from scipy.stats import wasserstein_distance as scipy_wasserstein_distance
 
-from utils.Timer import Timer
+from dist_matrix.utils.Timer import Timer
 from numba.cuda.testing import unittest, CUDATestCase
 
 # from ElMD import ElMD
 
-from njit_dist_matrix_full import dist_matrix as cpu_dist_matrix
-from cuda_dist_matrix_full import dist_matrix as gpu_dist_matrix
+from dist_matrix.njit_dist_matrix_full import dist_matrix as cpu_dist_matrix
+from dist_matrix.cuda_dist_matrix_full import dist_matrix as gpu_dist_matrix
 
 # os.environ["COLUMNS"] = str(cols)
 # os.environ["USE_64"] = "0"
