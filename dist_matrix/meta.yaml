@@ -1,0 +1,44 @@
+{% set name = "dist_matrix" %}
+{% set version = "1.0.1" %}
+
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/dist_matrix-{{ version }}.tar.gz
+  sha256: bb99cbf60911542cc291ac6bd4b554ac03fc2d69104b1cf5af10fa7788e9abf3
+
+build:
+  number: 0
+  noarch: python
+  script: {{ PYTHON }} -m pip install . -vv
+
+requirements:
+  host:
+    - pip
+    - python >=3.7
+  run:
+    - numba >=0.53.1
+    - numpy
+    - python >=3.7
+    - scipy
+
+test:
+  imports:
+    - dist_matrix
+  commands:
+    - pip check
+  requires:
+    - pip
+
+about:
+  home: https://pypi.org/project/dist_matrix/
+  summary: Predict materials properties using only the composition information.
+  license: MIT
+  license_file: LICENSE
+
+extra:
+  recipe-maintainers:
+    - sgbaird
