@@ -1,5 +1,5 @@
 {% set name = "dist_matrix" %}
-{% set version = "1.0.1" %}
+{% set version = "1.0.2" %}
 
 
 package:
@@ -8,7 +8,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/dist_matrix-{{ version }}.tar.gz
-  sha256: bb99cbf60911542cc291ac6bd4b554ac03fc2d69104b1cf5af10fa7788e9abf3
+  sha256: 3d40f69b44f00fbb25221706893f03054692aee059d7d83b908cf6d2448f0519
 
 build:
   number: 0
@@ -18,11 +18,12 @@ build:
 requirements:
   host:
     - pip
-    - python >=3.7
+    - flit
+    - python >=3.6,<3.10
   run:
     - numba >=0.53.1
     - numpy
-    - python >=3.7
+    - python >=3.6,<3.10
     - scipy
 
 test:
