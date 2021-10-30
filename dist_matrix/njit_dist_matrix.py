@@ -13,7 +13,7 @@ from numba.types import int32, float32, int64, float64
 
 # from mat_discover.ElM2D.metrics import njit_wasserstein_distance as wasserstein_distance
 # from mat_discover.ElM2D.metrics import euclidean_distance
-from mat_discover.ElM2D.cpu_metrics import wasserstein_distance, euclidean_distance
+from utils.cpu_metrics import wasserstein_distance, euclidean_distance
 
 # settings
 inline = os.environ.get("INLINE", "never")

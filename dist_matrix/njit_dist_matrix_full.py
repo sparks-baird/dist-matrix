@@ -6,7 +6,7 @@ from math import sqrt
 from numba import prange, njit
 from numba.types import int32, float32, int64, float64
 
-from . import cpu_helper as hp
+from utils import cpu_helper as hp
 
 # settings
 inline = os.environ.get("INLINE", "never")

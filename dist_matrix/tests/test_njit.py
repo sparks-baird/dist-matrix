@@ -4,7 +4,7 @@
 import numpy as np
 from scipy.stats import wasserstein_distance as scipy_wasserstein_distance
 
-from mat_discover.ElM2D.njit_dist_matrix_full import dist_matrix
+from njit_dist_matrix_full import dist_matrix
 
 
 def cpu_wasserstein_distance(u, v, u_weights, v_weights):
