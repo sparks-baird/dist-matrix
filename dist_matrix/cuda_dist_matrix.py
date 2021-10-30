@@ -12,7 +12,7 @@ Various distance metrics are available.
 import os
 import numpy as np
 from math import ceil
-from utils.metrics import wasserstein_distance, euclidean_distance
+from dist_matrix.utils.metrics import wasserstein_distance, euclidean_distance
 
 from numba import cuda, jit  # noqa
 from numba.types import int32, float32, int64, float64  # noqa
