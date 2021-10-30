@@ -14,7 +14,7 @@ import numpy as np
 from math import ceil, sqrt
 
 # from .metrics import wasserstein_distance, euclidean_distance
-from utils import helper as hp
+from dist_matrix.utils import helper as hp
 
 from numba import cuda
 from numba.types import int32, float32, int64, float64  # noqa
