@@ -215,14 +215,14 @@ def cdf_distance(
     return out
 
 
-# @njit(
-#     "float{0}(float{0}[:], float{0}[:], float{0}[:], float{0}[:], boolean, boolean, boolean)".format(
-#         bits
-#     ),
-#     fastmath=fastmath,
-#     debug=debug,
-# )
 @njit(fastmath=fastmath, debug=debug)
+@njit(
+    "float{0}(float{0}[:], float{0}[:], float{0}[:], float{0}[:], boolean, boolean, boolean)".format(
+        bits
+    ),
+    fastmath=fastmath,
+    debug=debug,
+)
 def wasserstein_distance(
     u, v, u_weights, v_weights, presorted, cumweighted, prepended
 ):  # noqa
