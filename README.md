@@ -4,7 +4,7 @@ Fast Numba-enabled CPU and GPU computations of Earth Mover's ([`scipy.stats.wass
 # Installation
 | conda | pip | source |
 | ---- | --- | --- |
-| `conda install -c sgbaird dist-matrix` | `pip install dist-matrix` | `git clone <url>; pip install -e .`
+| `conda install -c sgbaird dist_matrix` | `pip install dist_matrix` | `git clone <url>; pip install -e .`
 
 where `<url>` is https://github.com/sparks-baird/dist-matrix.git.
 
@@ -24,3 +24,6 @@ distances = gpu_dist_matrix(
     metric="wasserstein", # "euclidean"
 )
 ```
+
+# See Also
+Element Mover's Distances via [chem_wasserstein](https://github.com/sparks-baird/chem_wasserstein) (based on [ElM2D](https://github.com/lrcfmd/ElM2D))
