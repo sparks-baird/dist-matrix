@@ -1,5 +1,5 @@
 # Distance Matrices
-Fast Numba-enabled CPU and GPU computations of Earth Mover's ([`scipy.stats.wasserstein_distance`](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.wasserstein_distance.html)) and Euclidean distances. `10000 x 10000` weighted Wasserstein distance matrix in ~15 s on GPU.
+Fast Numba-enabled CPU and GPU computations of 1D Earth Mover's ([`scipy.stats.wasserstein_distance`](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.wasserstein_distance.html)) and Euclidean distances. `10000 x 10000` weighted Wasserstein distance matrix in ~15 s on GPU.
 
 # Installation
 
