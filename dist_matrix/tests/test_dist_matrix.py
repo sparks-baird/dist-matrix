@@ -6,7 +6,7 @@ from numpy.testing import assert_allclose
 import numpy as np
 import pytest
 
-from scipy.spatial.distance import euclidean, cdist
+from scipy.spatial.distance import euclidean, cdist, pdist
 from scipy.stats import wasserstein_distance as scipy_wasserstein_distance
 
 from dist_matrix.utils.Timer import Timer
@@ -214,7 +214,7 @@ def test_dist_matrix(sets, metric, target, sparsity):
     if sparsity == "dense":
         if testQ:
             with Timer("one set check (cdist)"):
-                dist_matrix_check = cdist(U_Uw, U_Uw, metric=dist_func)
+                dist_matrix_check = pdist(U_Uw, metric=dist_func)
         else:
             with Timer("two set check (cdist)"):
                 dist_matrix_check = cdist(U_Uw, V_Vw, metric=dist_func)

@@ -454,7 +454,7 @@ def dist_matrix(
             out[k] = compute_distance(u, v, uw, vw, metric_num)
 
     @cuda.jit(
-        "void(f{0}[:,:], f{0}[:,:], f{0}[:,:], i{0})".format(bytes),
+        "void(f{0}[:,:], f{0}[:,:], f{0}[:], i{0})".format(bytes),
         fastmath=fastmath,
     )
     def one_set_distance_matrix(U, U_weights, out, metric_num):
@@ -482,14 +482,10 @@ def dist_matrix(
         dm_rows = U.shape[0]
         dm_cols = U.shape[0]
 
-        if i < j and i < dm_rows and j < dm_cols and i != j:
+        if i < j and i < dm_rows and j < dm_cols:
             u = U[i]
-            v = U[j]
             uw = U_weights[i]
-            vw = U_weights[j]
-            d = compute_distance(u, v, uw, vw, metric_num)
-            out[i, j] = d
-            out[j, i] = d
+            out[dm_rows * i + j - ((i + 2) * (i + 1)) // 2] = compute_distance(u, u, uw, uw, metric_num)
 
     # faster compilation *and* runtimes with explicit signature
     @cuda.jit(
@@ -611,6 +607,8 @@ def dist_matrix(
 
     if pairQ:
         shape = (npairs,)
+    elif not isXY:
+        shape = (m * (m - 1) // 2, 1)
     else:
         shape = (m, m2)
 
