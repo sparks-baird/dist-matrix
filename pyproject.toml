@@ -17,5 +17,9 @@ dependencies=[
     "numba>=0.53.1",
 ]
 
+tests = [
+    "pytest"
+]
+
 [project.urls]
 Home = "https://github.com/sparks-baird/dist-matrix"
