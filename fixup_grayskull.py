@@ -2,7 +2,7 @@
 from souschef.recipe import Recipe
 from os.path import join
 
-fpath = join("dist_matrix", "meta.yaml")
+fpath = join("dist-matrix", "meta.yaml")
 fpath2 = join("scratch", "meta.yaml")
 my_recipe = Recipe(load_file=fpath)
 my_recipe["requirements"]["host"].append("flit")

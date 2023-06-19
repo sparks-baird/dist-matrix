@@ -1,6 +1,5 @@
-{% set name = "dist_matrix" %}
-{% set version = "1.0.0" %}
-
+{% set name = "dist-matrix" %}
+{% set version = "1.0.4" %}
 
 package:
   name: {{ name|lower }}
@@ -8,23 +7,23 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/dist_matrix-{{ version }}.tar.gz
-  sha256: b6dc4b22576c848797009c5298ce8b2bb4f52feeeeeaec79abd864878a70eefe
+  sha256: 73a51836bc7e1709a5432103a006541c4d73af48732d4e71c75b4eefa5f45e9a
 
 build:
-  number: 0
   noarch: python
-  script: {{ PYTHON }} -m flit install
+  script: {{ PYTHON }} -m pip install . -vv
+  number: 0
 
 requirements:
   host:
+    - python >=3.7
+    - flit_core >=3.2,<4
     - pip
-    - flit
-    - python
   run:
-    - numba >=0.53.1
+    - python >=3.7
     - numpy
-    - python
     - scipy
+    - numba >=0.53.1
 
 test:
   imports:
@@ -35,7 +34,6 @@ test:
     - pip
 
 about:
-  home: https://pypi.org/project/dist_matrix/
   summary: Predict materials properties using only the composition information.
   license: MIT
   license_file: LICENSE
