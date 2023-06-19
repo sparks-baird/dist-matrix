@@ -17,9 +17,8 @@ build:
 requirements:
   host:
     - python >=3.7
-    - flit_core >=3.2,<4
-    - pip
     - flit
+    - pip
   run:
     - python >=3.7
     - numpy
