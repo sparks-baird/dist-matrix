@@ -436,7 +436,7 @@ def dist_matrix(
 
     # @njit(fastmath=fastmath, parallel=parallel, debug=debug)
     @njit(
-        "void(f{0}[:,:], f{0}[:,:], f{0}[:,:], i{0})".format(bytes),
+        "void(f{0}[:,:], f{0}[:,:], f{0}[:], i{0})".format(bytes),
         fastmath=fastmath,
         parallel=parallel,
         debug=debug,
@@ -468,12 +468,8 @@ def dist_matrix(
             for j in range(dm_cols):
                 if i < j:
                     u = U[i]
-                    v = U[j]
                     uw = U_weights[i]
-                    vw = U_weights[j]
-                    d = compute_distance(u, v, uw, vw, metric_num)
-                    out[i, j] = d
-                    out[j, i] = d
+                    out[dm_rows * i + j - ((i + 2) * (i + 1)) // 2] = compute_distance(u, u, uw, uw, metric_num)
 
     # faster compilation *and* runtimes with explicit signature (tested on cuda.jit)
     # @njit(fastmath=fastmath, parallel=parallel, debug=debug)
@@ -519,6 +515,8 @@ def dist_matrix(
     if pairQ:
         npairs = pairs.shape[0]
         shape = (npairs,)
+    elif not isXY:
+        shape = (m * (m-1) // 2, )
     else:
         shape = (m, m2)
 
